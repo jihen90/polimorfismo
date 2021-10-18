@@ -1,36 +1,17 @@
 <%= form_with(model: order, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :number %>
+    <%= form.number_field :number %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div>
+    <%= form.label :payment_id %>
+    <%= form.select :payment_id, options_for_select(@payments) %>
   </div>
 
-  <div class="field">
-    <%= form.label :stock %>
-    <%= form.text_field :stock %>
-  </div>
-
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
-  </div>
-
+  <br>
+  
   <div class="actions">
     <%= form.submit %>
   </div>
